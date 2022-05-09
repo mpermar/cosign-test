@@ -9,5 +9,6 @@ env:
   VIB_PUBLIC_URL: https://cp.bromelia.vmware.com
 jobs:
   doit:
-    name: Install Cosign
-    uses: sigstore/cosign-installer@main
+    steps:
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@main
