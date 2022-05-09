@@ -24,15 +24,9 @@ jobs:
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
         
-      - name: Log into ghcr.io
-        uses: docker/login-action@master
-        with:
-          registry: ghcr.io
-          username: mpermar
-          password: ${{ secrets.GITHUB_TOKEN }}
-                    
       - name: Sign the package
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
+          docker login -u mpermar@gmail.com -p ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           cosign sign ghcr.io/mpermar-tests/wordpress:13.1.11
