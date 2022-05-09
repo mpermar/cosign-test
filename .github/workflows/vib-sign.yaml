@@ -30,13 +30,8 @@ jobs:
           registry: ghcr.io
           username: mpermar
           password: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Get container info
-        id: container_info
-        run: |
-          docker inspect "ghcr.io/mpermar-tests/wordpress:13.1.11" --format '{{ index .RepoDigests 0 }}' | awk -F '@' '{ print $2 }'
-          
-      - name: Sign the container image
+                    
+      - name: Sign the package
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
