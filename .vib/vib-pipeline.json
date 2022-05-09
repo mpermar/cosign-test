@@ -42,7 +42,7 @@
           "params": {
             "repository": {
               "kind": "OCI",
-              "url": "ghcr.io/mpermar/wordpress",
+              "url": "oci://ghcr.io/mpermar/wordpress",
               "username": "mpermar@gmail.com",
               "password": "{PAT}"
             }
