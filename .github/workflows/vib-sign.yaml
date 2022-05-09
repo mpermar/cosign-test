@@ -9,6 +9,7 @@ env:
   VIB_PUBLIC_URL: https://cp.bromelia.vmware.com
 jobs:
   doit:
+    runs-on: ubuntu-latest
     steps:
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
