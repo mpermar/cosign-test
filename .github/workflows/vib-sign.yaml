@@ -34,7 +34,7 @@ jobs:
       - name: Get container info
         id: container_info
         run: |
-          docker inspect "${IMAGE_NAME}:latest" --format '{{ index .RepoDigests 0 }}' | awk -F '@' '{ print $2 }'
+          docker inspect "ghcr.io/mpermar-tests/wordpress:13.1.11" --format '{{ index .RepoDigests 0 }}' | awk -F '@' '{ print $2 }'
           
       - name: Sign the container image
         env:
