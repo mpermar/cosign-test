@@ -1,0 +1,55 @@
+{
+  "phases": {
+    "package": {
+      "context": {
+        "resources": {
+          "url": "https://github.com/bitnami/charts/tarball/378f8eb434fca800788468a41fc1e4e32735689f",
+          "path": "/bitnami/wordpress"
+        }
+      },
+      "actions": [
+        {
+          "action_id": "helm-package"
+        },
+        {
+          "action_id": "helm-lint"
+        }
+      ]
+    },
+    "verify": {
+      "context": {
+        "resources": {
+          "url": "https://gitlab.eng.vmware.com/api/v4/projects/76399/repository/archive.tar?sha=1aa73b3eb11866ccb9773ba569481e026d5c29e5&private_token=p8VKirPPUsb9-TxyghTf",
+          "path": "/examples/wordpress"
+        }
+      },
+      "actions": [
+        {
+          "action_id": "trivy",
+          "params": {
+            "threshold": "CRITICAL",
+            "vuln_type": [
+              "OS"
+            ]
+          }
+        }
+      ]
+    },
+    "publish": {
+      "actions": [
+        {
+          "action_id": "helm-publish",
+          "params": {
+            "repository": {
+              "kind": "OCI",
+              "url": "ghcr.io/mpermar/wordpress",
+              "username": "mpermar@gmail.com",
+              "password": "{PAT}"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
