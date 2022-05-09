@@ -31,8 +31,13 @@ jobs:
           username: mpermar
           password: ${{ secrets.GITHUB_TOKEN }}
           
+      - name: Get container info
+        id: container_info
+        run: |
+          docker inspect "${IMAGE_NAME}:latest" --format '{{ index .RepoDigests 0 }}' | awk -F '@' '{ print $2 }'
+          
       - name: Sign the container image
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign sign ghcr.io/mpermar-tests/wordpress@13.1.11
+          cosign sign ghcr.io/mpermar-tests/wordpress:13.1.11
