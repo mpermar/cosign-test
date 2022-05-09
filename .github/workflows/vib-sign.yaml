@@ -15,6 +15,12 @@ jobs:
       packages: write    
       id-token: write # This enables OIDC
     steps:
+      - name: Info           
+        run: |
+          ls -la $HOME
+          echo "Searching docker..."
+          which docker
+
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
         
