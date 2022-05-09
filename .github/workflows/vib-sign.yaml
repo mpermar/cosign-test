@@ -28,11 +28,11 @@ jobs:
         uses: docker/login-action@master
         with:
           registry: ghcr.io
-          username: mpermar-tests
+          username: mpermar
           password: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Sign the container image
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign sign ghcr.io/mpermar-tests/wordpress:13.1.11
+          cosign sign ghcr.io/mpermar/wordpress:13.1.11
