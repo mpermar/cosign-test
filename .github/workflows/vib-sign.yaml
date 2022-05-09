@@ -35,4 +35,4 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "true"
         run: |
-          cosign sign ghcr.io/mpermar/wordpress:13.1.11
+          cosign sign ghcr.io/mpermar-tests/wordpress@13.1.11
